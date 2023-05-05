@@ -68,7 +68,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()) {
-                            Toast.makeText(RegistrationActivity.this, "Creating an account...", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegistrationActivity.this, "Account Created!", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
                         }else{
                             Toast.makeText(RegistrationActivity.this, "Regristration Failed..."+task.getException(), Toast.LENGTH_SHORT).show();

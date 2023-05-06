@@ -2,6 +2,7 @@ package com.example.e_commerce.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,11 +28,16 @@ public class ShowAllActivity extends AppCompatActivity {
     List<ShowAllModel> showAllModelList;
 
     FirebaseFirestore firebaseFirestore;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_all_items);
+
+        toolbar = findViewById(R.id.showAll_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String type = getIntent().getStringExtra("type");
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -74,22 +80,24 @@ public class ShowAllActivity extends AppCompatActivity {
                             }
                         }
                     });
-            if (type != null && type.equalsIgnoreCase("Vinyl Figures")) {
-                firebaseFirestore.collection("ShowAll").whereEqualTo("type", "Vinyl Figures")
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    for (DocumentSnapshot doc : task.getResult().getDocuments()) {
+        }
+        if (type != null && type.equalsIgnoreCase("Vinyl Figures")) {
+            firebaseFirestore.collection("ShowAll").whereEqualTo("type", "Vinyl Figures")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (DocumentSnapshot doc : task.getResult().getDocuments()) {
 
-                                        ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
-                                        showAllModelList.add(showAllModel);
-                                        showAllAdapter.notifyDataSetChanged();
-                                    }
+                                    ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
+                                    showAllModelList.add(showAllModel);
+                                    showAllAdapter.notifyDataSetChanged();
                                 }
                             }
-                        });
+                        }
+                    });
+        }
                 if (type != null && type.equalsIgnoreCase("Shirts")) {
                     firebaseFirestore.collection("ShowAll").whereEqualTo("type", "Shirts")
                             .get()
@@ -106,6 +114,7 @@ public class ShowAllActivity extends AppCompatActivity {
                                     }
                                 }
                             });
+                }
 
                     if (type != null && type.equalsIgnoreCase("Shoes")) {
                         firebaseFirestore.collection("ShowAll").whereEqualTo("type", "Shoes")
@@ -123,6 +132,7 @@ public class ShowAllActivity extends AppCompatActivity {
                                         }
                                     }
                                 });
+                    }
 
                         if (type != null && type.equalsIgnoreCase("Comic Books")) {
                             firebaseFirestore.collection("ShowAll").whereEqualTo("type", "Comic Books")
@@ -140,6 +150,7 @@ public class ShowAllActivity extends AppCompatActivity {
                                             }
                                         }
                                     });
+                        }
                             if (type != null && type.equalsIgnoreCase("Kitchenware")) {
                                 firebaseFirestore.collection("ShowAll").whereEqualTo("type", "Kitchenware")
                                         .get()
@@ -156,6 +167,7 @@ public class ShowAllActivity extends AppCompatActivity {
                                                 }
                                             }
                                         });
+                            }
                                 if (type != null && type.equalsIgnoreCase("Accessories")) {
                                     firebaseFirestore.collection("ShowAll").whereEqualTo("type", "Accessories")
                                             .get()
@@ -172,14 +184,12 @@ public class ShowAllActivity extends AppCompatActivity {
                                                     }
                                                 }
                                             });
-
-
+                                }
                                 }
                             }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+
+
+
+
+
+

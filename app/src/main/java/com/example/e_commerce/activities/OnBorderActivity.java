@@ -37,7 +37,7 @@ public class OnBorderActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         // hide toolbar
-        getSupportActionBar().hide();
+   //     getSupportActionBar().hide();
         viewPager = findViewById(R.id.slider);
         dotsLayout = findViewById(R.id.dots);
         btn = findViewById(R.id.get_started_btn);

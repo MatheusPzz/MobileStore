@@ -9,13 +9,23 @@ public class ShowAllModel implements Serializable {
     String Popularity;
     int Price;
     String img_url;
+    String type;
 
-    public ShowAllModel(String description, String name, String popularity, String img_url, int price) {
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public ShowAllModel(String description, String name, String popularity, String img_url, int price, String type) {
         this.Description = description;
         this.Name = name;
         this.Popularity = popularity;
         this.img_url = img_url;
         this.Price = price;
+        this.type = type;
     }
     public ShowAllModel() {
     }

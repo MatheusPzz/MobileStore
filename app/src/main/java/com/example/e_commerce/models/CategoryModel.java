@@ -4,7 +4,7 @@ public class CategoryModel {
 
     String img_url;
     String Name;
-    String Type;
+    String type;
 
     public CategoryModel(){
 
@@ -12,7 +12,7 @@ public class CategoryModel {
     public CategoryModel(String img_url, String name, String type) {
         this.img_url = img_url;
         this.Name = name;
-        this.Type = type;
+        this.type = type;
     }
 
     public String getImg_url() {
@@ -32,11 +32,11 @@ public class CategoryModel {
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
 
     public void setType(String type) {
-        this.Type = type;
+        this.type = type;
     }
 
 }
